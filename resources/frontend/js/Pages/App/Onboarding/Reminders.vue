@@ -86,11 +86,11 @@ const enableNotifications = async () => {
     }
 
     try {
-        await navigator.serviceWorker.register('/notifier.js');
         const permission = await Notification.requestPermission();
         if (permission !== 'granted') {
             return false;
         }
+        await navigator.serviceWorker.register('/notifier.js');
         const registration = await navigator.serviceWorker.ready;
 
         const vapidPublicKey = import.meta.env.VITE_VAPID_PUBLIC_KEY;
