@@ -1,0 +1,14 @@
+created:
+    - database/factories/UserFactory.php
+    - database/factories/PollenForecastFactory.php
+    - database/factories/EntryFactory.php
+    - database/migrations/2026_03_12_180241_create_users_table.php
+    - database/migrations/2026_03_12_180242_create_pollen_forecasts_table.php
+    - database/migrations/2026_03_12_180243_create_entries_table.php
+    - app/Models/User.php
+    - app/Models/PollenForecast.php
+    - app/Models/Entry.php
+models:
+    User: { name: string, email: 'string unique', email_verified_at: 'timestamp nullable default:NULL', password: string, remember_token: 'string:100 nullable default:NULL', allergies: 'json nullable' }
+    PollenForecast: { date: date, latitude: 'decimal:6,2 index', longitude: 'decimal:6,2 index', tree_upi: 'integer nullable', grass_upi: 'integer nullable', weed_upi: 'integer nullable', pollen_data: 'json nullable', relationships: { hasMany: Entry } }
+    Entry: { user_id: 'id foreign', pollen_forecast_id: 'id foreign nullable', date: date, symptoms_severity: 'integer default:0', symptoms: 'json nullable', medication_taken: 'boolean default:false', notes: 'text nullable', relationships: { belongsTo: 'User, PollenForecast' } }
