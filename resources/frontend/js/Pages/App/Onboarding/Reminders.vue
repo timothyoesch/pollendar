@@ -81,26 +81,21 @@ const urlBase64ToUint8Array = (base64String) => {
 
 const enableNotifications = async () => {
     if (!('serviceWorker' in navigator) || !('PushManager' in window)) {
-        alert('Push/SW not supported.');
+        alert('This browser does not support push notifications. Please use a compatible browser or turn off the toggle to continue.');
         return false;
     }
 
     try {
-        // 1. Let's see what the browser thinks the permission currently is
-        alert('Current permission state: ' + Notification.permission);
 
         const permission = await Notification.requestPermission();
-        alert('Prompt finished. New permission: ' + permission);
 
         if (permission !== 'granted') {
             return false;
         }
 
-        alert('Registering SW...');
         await navigator.serviceWorker.register('/notifier.js');
         const registration = await navigator.serviceWorker.ready;
 
-        alert('Subscribing...');
         const vapidPublicKey = import.meta.env.VITE_VAPID_PUBLIC_KEY;
         const convertedVapidKey = urlBase64ToUint8Array(vapidPublicKey);
 
@@ -109,15 +104,12 @@ const enableNotifications = async () => {
             applicationServerKey: convertedVapidKey
         });
 
-        alert('Sending to backend...');
         await axios.post('/onboarding/push-subscription', subscription.toJSON());
 
         isSubscribed.value = true;
         return true;
 
     } catch (error) {
-        // THIS is the golden ticket. If it's a code failure, this will reveal it.
-        alert('CRASH: ' + error.message);
         return false;
     }
 };
