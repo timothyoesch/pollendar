@@ -100,7 +100,7 @@ class OnboardingController extends Controller
                 'max_notification_attempts' => 0,
                 'onboarding_step' => 4
             ]);
-            return redirect()->route('dashboard');
+            return redirect()->route('app.dashboard');
         }
 
         $user->update([
@@ -110,6 +110,6 @@ class OnboardingController extends Controller
             'onboarding_step' => 4
         ]);
 
-        return redirect()->route('dashboard');
+        return redirect()->route('app.dashboard');
     }
 }

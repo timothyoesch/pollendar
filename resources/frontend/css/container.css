@@ -1,0 +1,3 @@
+.pl-app__container {
+    @apply max-w-100 mx-auto px-4;
+}

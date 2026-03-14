@@ -1,6 +1,8 @@
 @import "tailwindcss";
 @import "./typography.css";
 @import "./form.css";
+@import "./container.css";
+@import "./elements.css";
 
 @theme {
     --color-primary-50: #f2fbf6;
@@ -26,4 +28,10 @@
     --color-secondary-800: #a80c4d;
     --color-secondary-900: #8c0f42;
     --color-secondary-950: #560124;
+
+    --color-signal-verylow: #3FC67A;
+    --color-signal-low: #A9C63F;
+    --color-signal-moderate: #F6FF00;
+    --color-signal-high: #F5AF00;
+    --color-signal-veryhigh: #F50000;
 }

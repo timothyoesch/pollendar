@@ -30,7 +30,11 @@ Route::middleware('auth')->group(function () {
     Route::post("/onboarding/skip-reminders", [OnboardingController::class, 'skipReminders'])->name('onboarding.skip-reminders');
     Route::post("/onboarding/push-subscription", [OnboardingController::class, 'subscribeNotifications'])->name('onboarding.subscribe-notifications');
 
-    Route::get('/dashboard', function () {
+    Route::get('/app', function () {
         return Inertia::render('App/Dashboard');
-    })->name('dashboard');
+    })->name('app.dashboard');
+
+    Route::get('/app/profile', function () {
+        return Inertia::render('App/Profile');
+    })->name('app.profile');
 });
