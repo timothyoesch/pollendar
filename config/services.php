@@ -35,4 +35,8 @@ return [
         ],
     ],
 
+    "pollen_api" => [
+        "key" => env('GOOGLE_POLLEN_API_KEY'),
+    ]
+
 ];

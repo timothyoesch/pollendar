@@ -1,5 +1,8 @@
 <script setup>
 import { Icon } from '@iconify/vue';
+const props = defineProps({
+    pollenForecast: Object
+});
 </script>
 <template>
     <div class="pl-app__heroine w-full pt-4">
@@ -10,27 +13,39 @@ import { Icon } from '@iconify/vue';
                 {{ $page.props.auth.user.homebase_name }}
             </p>
             <div class="pl-app__heroine__pollen-levels bg-secondary-50 p-6 rounded-lg text-black mt-2 shadow-md">
-                <div class="pl-app__heroine__pollen-levels__items flex justify-between">
-                    <div class="pl-app__heroine__pollen-levels__items__item">
-                        <div class="pl-app__heroine__pollen-levels__items__item__box bg-signal-verylow text-white">
-                            <span class="fugaz">1</span>
+                <div class="pl-app__heroine__pollen-levels__items flex justify-around">
+                    <div
+                        v-if="props.pollenForecast?.grass_upi !== null"
+                        class="pl-app__heroine__pollen-levels__items__item"
+                        :class="'pl-app_heroine__pollen-levels__items__item-severity-' + props.pollenForecast?.grass_upi"
+                    >
+                        <div class="pl-app__heroine__pollen-levels__items__item__box">
+                            <span class="fugaz">{{ props.pollenForecast?.grass_upi }}</span>
                         </div>
                         <span class="text-sm block text-center">Grass pollen</span>
                     </div>
-                    <div class="pl-app__heroine__pollen-levels__items__item">
-                        <div class="pl-app__heroine__pollen-levels__items__item__box bg-signal-low text-white">
-                            <span class="fugaz">2</span>
+                    <div
+                        v-if="props.pollenForecast?.tree_upi !== null"
+                        class="pl-app__heroine__pollen-levels__items__item"
+                        :class="'pl-app_heroine__pollen-levels__items__item-severity-' + props.pollenForecast?.tree_upi"
+                    >
+                        <div class="pl-app__heroine__pollen-levels__items__item__box">
+                            <span class="fugaz">{{ props.pollenForecast?.tree_upi }}</span>
                         </div>
                         <span class="text-sm block text-center">Tree pollen</span>
                     </div>
-                    <div class="pl-app__heroine__pollen-levels__items__item">
-                        <div class="pl-app__heroine__pollen-levels__items__item__box bg-signal-moderate text-black">
-                            <span class="fugaz">3</span>
+                    <div
+                        v-if="props.pollenForecast?.weed_upi !== null"
+                        class="pl-app__heroine__pollen-levels__items__item"
+                        :class="'pl-app_heroine__pollen-levels__items__item-severity-' + props.pollenForecast?.weed_upi"
+                    >
+                        <div class="pl-app__heroine__pollen-levels__items__item__box">
+                            <span class="fugaz">{{ props.pollenForecast?.weed_upi }}</span>
                         </div>
                         <span class="text-sm block text-center">Weed pollen</span>
                     </div>
                 </div>
-                <p class="mt-2 leading-tight">Pollen levels low right now. It's a great day to enjoy the outdoors!</p>
+                <p class="mt-2 leading-tight">{{ props.pollenForecast?.health_recommendations }}</p>
             </div>
         </div>
     </div>

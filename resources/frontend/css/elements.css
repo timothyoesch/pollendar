@@ -7,7 +7,27 @@
 }
 
 .pl-app__heroine__pollen-levels__items__item {
-    @apply w-full flex flex-col items-center gap-y-1;
+    @apply w-full max-w-40 flex flex-col items-center gap-y-1;
+}
+
+.pl-app_heroine__pollen-levels__items__item-severity-1 .pl-app__heroine__pollen-levels__items__item__box {
+    @apply bg-signal-verylow text-white;
+}
+
+.pl-app_heroine__pollen-levels__items__item-severity-2 .pl-app__heroine__pollen-levels__items__item__box {
+    @apply bg-signal-low text-white;
+}
+
+.pl-app_heroine__pollen-levels__items__item-severity-3 .pl-app__heroine__pollen-levels__items__item__box {
+    @apply bg-signal-moderate text-black;
+}
+
+.pl-app_heroine__pollen-levels__items__item-severity-4 .pl-app__heroine__pollen-levels__items__item__box {
+    @apply bg-signal-high text-white;
+}
+
+.pl-app_heroine__pollen-levels__items__item-severity-5 .pl-app__heroine__pollen-levels__items__item__box {
+    @apply bg-signal-veryhigh text-white;
 }
 
 .pl-app__heroine__pollen-levels__items__item__box {
@@ -19,4 +39,28 @@
         margin-bottom: -0.1em;
         margin-left: -0.06em;
     }
+}
+
+.pl-app__severity-pill-0 {
+    @apply bg-signal-verylow text-white;
+}
+
+.pl-app__severity-pill-1 {
+    @apply bg-signal-verylow text-white;
+}
+
+.pl-app__severity-pill-2 {
+    @apply bg-signal-low text-white;
+}
+
+.pl-app__severity-pill-3 {
+    @apply bg-signal-moderate text-black;
+}
+
+.pl-app__severity-pill-4 {
+    @apply bg-signal-high text-white;
+}
+
+.pl-app__severity-pill-5 {
+    @apply bg-signal-veryhigh text-white;
 }

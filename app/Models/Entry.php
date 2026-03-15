@@ -22,6 +22,7 @@ class Entry extends Model
         'symptoms_severity',
         'symptoms',
         'medication_taken',
+        'medication_information',
         'notes',
     ];
 

@@ -20,7 +20,7 @@ let currentRoute = ref(window.location.pathname);
                     </Link>
                 </div>
                 <div class="pl-app__bottom-bar__fab">
-                    <Link href="/app/new" class="w-18 h-18 mt-[-75%] bg-white rounded-full flex items-center justify-center">
+                    <Link href="/app/entry/create" class="w-18 h-18 mt-[-75%] bg-white rounded-full flex items-center justify-center">
                         <Icon icon="heroicons:plus-circle-16-solid" class="w-24 h-24 text-secondary-400" />
                     </Link>
                 </div>
